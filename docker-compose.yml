@@ -1,12 +1,12 @@
 version: "3"
 services:
   rippled:
-    build: .
+    build: ./testnet # remove /testnet for production use
     ports:
       - "51235:51235"
       - "5005:5005"
       - "5006:5006"
     volumes:
       - "~/.local/share/rippled/docker/:/data"
-      - "./rippled.conf:/etc/rippled.conf"
-    command: --conf /etc/rippled.conf
+      - "./testnet/rippled.conf:/etc/rippled.conf" # remove /testnet for production use
+    command: /opt/ripple/bin/rippled --conf /etc/rippled.conf
